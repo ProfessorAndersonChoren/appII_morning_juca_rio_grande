@@ -10,18 +10,48 @@ class TicketCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Card(
-        child: Padding(
-          padding: const EdgeInsets.all(8),
-          child: Row(
-            children: [
-              Image.asset(
-                'assets/motorcycle.png',
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(8),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Badge(
+              label: Text(
+                ticket.id.toString(),
               ),
-            ],
-          ),
+              alignment: Alignment.topLeft,
+              child: Image.asset(
+                'assets/${ticket.vehicle.vehicleType.name}.png',
+                width: 64,
+              ),
+            ),
+            Row(
+              children: [
+                Image.asset(
+                  'assets/parking.png',
+                  width: 48,
+                ),
+                Text(
+                  ticket.vacancy.toString(),
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Image.asset(
+                  'assets/plate.png',
+                  width: 48,
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  ticket.vehicle.licensePlate,
+                  style: Theme.of(context).textTheme.labelLarge,
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
